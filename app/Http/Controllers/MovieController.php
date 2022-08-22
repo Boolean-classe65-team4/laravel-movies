@@ -24,7 +24,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view('movies.create');
     }
 
     /**
@@ -35,7 +35,14 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newMovie = new Movie();
+        $newMovie->title = $data['title'];
+        $newMovie->overview = $data['overview'];
+        $newMovie->save();
+
+
     }
 
     /**
