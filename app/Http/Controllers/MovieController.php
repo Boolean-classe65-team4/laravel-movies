@@ -51,9 +51,12 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function show(Movie $movie)
+    public function show($id)
     {
-        //
+        $movie = Movie::findOrFail($id);
+
+
+        return view("movies.show", compact("movie"));
     }
 
     /**
@@ -62,9 +65,11 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Movie $movie)
+    public function edit($id)
     {
-        //
+        $movie = Movie::FindOrFail($id);
+
+        return view('movies.edit',['movie' => $movie]);
     }
 
     /**
@@ -74,9 +79,24 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movie $movie)
+    public function update(Request $request, $id)
     {
-        //
+        $movie = Movie::FindorFail($id);
+
+/*         $data = $request->validate([
+            'title' => "required|max:100",
+            'overview' => "required",
+            'thumb' => "required",
+            'rating' => "required",
+            'running_time' => "required",
+            'release_date' => "required",
+            'language' => "required",
+        ]); */
+
+        $data = $request->all();
+
+        $movie->update($data);
+        return redirect()->route('movies.show');
     }
 
     /**
@@ -85,8 +105,11 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Movie $movie)
+    public function destroy($id)
     {
-        //
+        $movie = Movie::findOrFail($id);
+        $movie->delete();
+
+        return redirect()->route("movies.index");
     }
 }

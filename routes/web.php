@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name("home");
 
 
 Route::get('/movies', 'MovieController@index')->name('movies.index');
@@ -27,3 +27,7 @@ Route::get('/movies/{movie}', 'MovieController@show')->name('movies.show');
 Route::get('/movies/{movie}/edit', 'MovieController@edit')->name('movies.edit');
 Route::patch('/movies/{movie}', 'MovieController@update')->name('movies.update');
 Route::delete('/movies/{movie}', 'MovieController@destroy')->name('movies.destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
