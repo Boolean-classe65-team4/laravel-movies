@@ -35,16 +35,22 @@
                         <td>{{ $movie->rating }}</td>
                         <td>
                                 <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-warning">
-                                <svg class="bi" width="16" height="16">
-                                    <use xlink:href="/bootstrap-icons.svg#eye-fill"></use>
-                                </svg>
+                                    show
                             </a>
                         <td>
                             <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-info">
-                                <svg class="bi" width="16" height="16">
-                                    <use xlink:href="/bootstrap-icons.svg#pencil-square"></use>
-                                </svg>
+                                edit
                             </a>
+                        </td>
+                        <td>
+                            <form action="{{ route('movies.destroy', $movie->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+            
+                                <button type="submit" class="btn btn-danger">
+                                    elimina
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
