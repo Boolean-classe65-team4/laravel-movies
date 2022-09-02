@@ -5,7 +5,7 @@
 @section('page_content')
     <div class="container">
         <div class="text-center py-3">
-            {{-- <a href="{{ route('admin.movies.create') }}" class="btn btn-primary">Aggiungi</a> --}}
+             <a href="{{ route('movies.create') }}" class="btn btn-primary">Aggiungi</a>
         </div>
 
         <table class="table">
@@ -45,7 +45,6 @@
                                     <use xlink:href="/bootstrap-icons.svg#pencil-square"></use>
                                 </svg>
                             </a>
-                        </td>
                         </td>
                     </tr>
                 @endforeach
