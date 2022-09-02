@@ -39,13 +39,13 @@
                                     <use xlink:href="/bootstrap-icons.svg#eye-fill"></use>
                                 </svg>
                             </a>
-
+                        <td>
                             <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-info">
                                 <svg class="bi" width="16" height="16">
                                     <use xlink:href="/bootstrap-icons.svg#pencil-square"></use>
                                 </svg>
                             </a>
-
+                        </td>
                         </td>
                     </tr>
                 @endforeach
