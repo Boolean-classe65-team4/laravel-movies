@@ -37,13 +37,14 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $movie = new Movie();
 
-        $newMovie = new Movie();
-        $newMovie->title = $data['title'];
-        $newMovie->overview = $data['overview'];
-        $newMovie->save();
+        $data =$request->all();
 
+        $movie->fill($data);
+        $movie->save();
+
+        return redirect()->route('movies.index' , $movie->id);
 
     }
 

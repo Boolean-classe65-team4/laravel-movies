@@ -1,54 +1,56 @@
-{{-- @extends('layout_app') --}}
+@extends('layout.app')
 
-{{-- @section('page_content') --}}
+@section('page_content')
 <div class="container">
     <div>
-        <form action="{{ route('movies.store') }}" method="post">
+        <form action=" {{route('movies.store')}} " method="post">
             @csrf
-            {{-- input TITLE --}}
-            <div class="mb-3">
-                <label class="form-label">Titolo</label>
-                <input type="text" class="form-control">
-            </div>
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <div class="form-container">
+                            <div class="mb-3">
+                                <label class="text-dark" for="titleInput" class="form-label">Title</label>
+                                <input type="text" value="" class="form-control {{$errors->has('title') ? 'is-invalid' : ''}} " placeholder="Add Title" name="title" id="titleInput">
+                                <div class="invalid-feedback"> {{$errors->first('title')}} </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-dark" for="secriptionInput" class="form-label">overview</label>
+                                <input type="text" value="" class="form-control {{$errors->has('overview') ? 'is-invalid' : ''}}" placeholder="Add overview" name="overview" id="secriptionInput">
+                                <div class="invalid-feedback"> {{$errors->first('overview')}} </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-dark" for="linkInput" class="form-label">Link movies</label>
+                                <input type="text" value="" class="form-control {{$errors->has('thumb') ? 'is-invalid' : ''}}" placeholder="Add Link" name="thumb" id="linkInput">
+                                <div class="invalid-feedback"> {{$errors->first('thumb')}} </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-dark" for="ratingInput" class="form-label">Rating</label>
+                                <input type="text" value="" class="form-control {{$errors->has('rating') ? 'is-invalid' : ''}}" placeholder="Add rating" name="rating" id="ratingInput">
+                                <div class="invalid-feedback"> {{$errors->first('rating')}} </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-dark" for="running_timeInput" class="form-label">Durata</label>
+                                <input type="text" value="" class="form-control {{$errors->has('running_time') ? 'is-invalid' : ''}}" placeholder="Add running_time" name="running_time" id="running_timeInput">
+                                <div class="invalid-feedback"> {{$errors->first('running_time')}} </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-dark" for="dateInput" class="form-label">Data di rilascio</label>
+                                <input type="date" value="" class="form-control" placeholder="Add Date Of Sale" name="release_date" id="dateInput">
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-dark" for="languageInput" class="form-label">Lingua</label>
+                                <input type="text" value="" class="form-control {{$errors->has('price') ? 'is-invalid' : ''}}" placeholder="language" name="language" id="languageInput">
+                                <div class="invalid-feedback"> {{$errors->first('price')}} </div>
+                            </div>  
+                            <div class="button-form d-flex">
+                                <div class="m-auto">
+                                    <button class="btn btn-primary" type="submit">Salva</button>
+                                    <a class="btn btn-outline-light" href="{{route('movies.index')}}">Annulla</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
-            {{-- input OVERVIEW --}}
-            <div class="mb-3">
-                <label class="form-label">Descrizione</label>
-                <textarea class="form-control"></textarea>
-            </div>
-
-            {{-- input URL IMMAGINE --}}
-            <div>
-                <label for="">Url immagine</label>
-                <input class='form-control' type="text" name="thumb">
-            </div>
-
-            {{-- input RATING --}}
-            <div>
-                <label for="">Valutazione</label>
-                <input class='form-control' type="number" name="thumb">
-            </div>
-            {{-- input RUNNING TIME --}}
-            <div>
-                <label for="">Durata</label>
-                <input class='form-control' type="number" name="thumb">
-            </div>
-            {{-- input RELEASE DATA --}}
-            <div>
-                <label for="">Data di rilascio</label>
-                <input class='form-control' type="date" name="thumb">
-            </div>
-
-            {{-- input LENGUAGE --}}
-            <div class="mb-3">
-                <label class="form-label">Lingua</label>
-                <input type="text" class="form-control">
-            </div>
-
-            <button type="submit">Salva</button>
-            <button><a href="{{ route('movies.index') }}">Annulla</a></button>
-        </form>
-    </div>
-</div>
-
-{{-- @endsection --}}
+@endsection
