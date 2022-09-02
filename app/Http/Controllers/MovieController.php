@@ -98,7 +98,8 @@ class MovieController extends Controller
         $data = $request->all();
 
         $movie->update($data);
-        return redirect()->route('movies.show');
+
+        return redirect()->route('movies.show', $id);
     }
 
     /**
